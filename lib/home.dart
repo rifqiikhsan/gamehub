@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gamehub/list_game_online.dart';
+import 'about.dart';
+import 'list_game_offline.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -11,37 +14,33 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 11,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.only(left: 25.0, top: 11),
-                  
-                  width: 325,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Color(0xffFFC908),
-                      width: 2,
-                    ),
-                    image: DecorationImage(
-                      image: AssetImage('assets/icon/search.png'),
-                      alignment: Alignment.centerLeft,
-                    ),
-                  ),
-                ),
                 SizedBox(
-                  width: 17,
+                  width: 37,
                 ),
+                
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/icon/about.png',
-                      width: 38,
-                      height: 38,
-                      alignment: Alignment.bottomCenter,
+                    GestureDetector(
+                      child: Image.asset(
+                        'assets/icon/about.png',
+                        width: 38,
+                        height: 38,
+                        alignment: Alignment.bottomCenter,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AboutMe(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -72,34 +71,256 @@ class MyHomePage extends StatelessWidget {
                 Row(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 370,
-                          height: 219,
+                          width: 395,
+                          height: 200,
                           margin: EdgeInsets.symmetric(horizontal: 25),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
                             color: Colors.white,
                             image: DecorationImage(
-                              image: AssetImage('assets/images/image 1.png'),
-                              fit: BoxFit.fitHeight,
+                              image: AssetImage('assets/images/ml-image.png',),
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: 16,
+                        Container(
+                          width:395,
+                          margin: EdgeInsets.only(left: 25),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
                             ),
-                            Text('Mobile Legends',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600,color: Colors.white),)
-                          ],
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 25,
+                                height: 30,
+                              ),
+                              Text(
+                                'Mobile Legends',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(width: 210),
+                              Row(
+                                children: [
+                                  Image.asset('assets/icon/Star.png'),
+                                  Image.asset('assets/icon/Star.png'),
+                                  Image.asset('assets/icon/Star.png'),
+                                  Image.asset('assets/icon/Star.png'),
+                                  Image.asset('assets/icon/star-setengah.png'),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ],
                 ),
               ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 25,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Games Online',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Container(
+                      width: 110,
+                      height: 3,
+                      color: Color(0xffFFC908),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 191,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Show All',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xffFFC908),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 13,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GameOnline(
+                        name: 'Sausage Man',
+                        icon: 'sausage-icon.png',
+                        rating: '4.0',
+                        size: '1.1GB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOnline(
+                        name: 'Mobile Legends',
+                        icon: 'ml-icon.png',
+                        rating: '4.1',
+                        size: '132MB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOnline(
+                        name: 'PUBG MOBILE',
+                        icon: 'pubg-icon.png',
+                        rating: '4.0',
+                        size: '730MB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOnline(
+                        name: 'Sausage Man',
+                        icon: 'sausage-icon.png',
+                        rating: '4.0',
+                        size: '1.1GB',
+                      ),
+                      
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 29,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 25,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Games Offline',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Container(
+                      width: 110,
+                      height: 3,
+                      color: Color(0xffFFC908),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 191,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Show All',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xffFFC908),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 13,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GameOffline(
+                        name: 'Minecraft',
+                        icon: 'minecraft-icon.png',
+                        rating: '4.6',
+                        size: '138MB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOffline(
+                        name: 'Ludo King',
+                        icon: 'ludo-icon.png',
+                        rating: '4.2',
+                        size: '57MB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOffline(
+                        name: 'Helix Jump',
+                        icon: 'helik-icon.png',
+                        rating: '4.2',
+                        size: '92MB',
+                      ),
+                      SizedBox(
+                          width: 15,
+                        ),
+                        GameOffline(
+                        name: 'Helix Jump',
+                        icon: 'helik-icon.png',
+                        rating: '4.2',
+                        size: '92MB',
+                      ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
