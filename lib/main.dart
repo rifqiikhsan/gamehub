@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gamehub/home.dart';
+import 'package:gamehub/screen/home.dart';
 
 void main() {
   runApp(const MyApp());

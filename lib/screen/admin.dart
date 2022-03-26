@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gamehub/addgame.dart';
-import 'package:gamehub/list_game.dart';
+import 'addgame.dart';
+import 'list_game.dart';
 import 'login.dart';
-import 'main.dart';
+import 'package:gamehub/main.dart';
 import 'home.dart';
 
 class AdminPage extends StatelessWidget {
