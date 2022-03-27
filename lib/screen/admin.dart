@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamehub/screen/detail_game_admin.dart';
 import 'addgame.dart';
 import 'list_game.dart';
 import 'login.dart';
@@ -50,11 +51,21 @@ class AdminPage extends StatelessWidget {
               rating: '4.0',
               size: '1.1GB',
             ),
-            ListGame(
-              judul: 'Mobile Legends',
-              icon: 'ml-icon.png',
-              rating: '4.1',
-              size: '132MB',
+            GestureDetector(
+              child: ListGame(
+                judul: 'Mobile Legends',
+                icon: 'ml-icon.png',
+                rating: '4.1',
+                size: '132MB',
+              ),
+              onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailGameAdmin(),
+                  ),
+                    );
+                  },
             ),
             ListGame(
               judul: 'PUBG MOBILE',

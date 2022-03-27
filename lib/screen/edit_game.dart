@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'admin.dart';
+import 'detail_game_admin.dart';
 
-class AddGame extends StatefulWidget {
-  const AddGame({Key? key}) : super(key: key);
+class EditGame extends StatefulWidget {
+  const EditGame({Key? key}) : super(key: key);
 
   @override
-  State<AddGame> createState() => _AddGameState();
+  State<EditGame> createState() => _EditGameState();
 }
 
-class _AddGameState extends State<AddGame> {
+class _EditGameState extends State<EditGame> {               
   final items = ['online', 'offline'];
   String? value;
   @override
@@ -18,7 +18,7 @@ class _AddGameState extends State<AddGame> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Add Game',
+          'Edit Game',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -206,91 +206,7 @@ class _AddGameState extends State<AddGame> {
               ),
             ),
 
-            SizedBox(
-              height: 15,
-            ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 25,
-                    ),
-                    Container(
-                      width: 190,
-                      height: 88,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/icon/camera.png'),
-                        ),
-                        border: Border.all(
-                          color: Color(0xffFFC908),
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 65,
-                          ),
-                          Text(
-                            "Upload Icon",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 18,
-                    ),
-                    Container(
-                      width: 190,
-                      height: 88,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/icon/camera.png'),
-                        ),
-                        border: Border.all(
-                          color: Color(0xffFFC908),
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 65,
-                          ),
-                          Text(
-                            "Upload Tumbnail",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  "Format yang di perbolehkan jpg/png/jpeg",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
+            
             SizedBox(
               height: 15,
             ),
@@ -383,7 +299,7 @@ class _AddGameState extends State<AddGame> {
                   // );
                 },
                 child: Text(
-                  'Add',
+                  'Save',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,color:Colors.black),
                 ),
                 style: ElevatedButton.styleFrom(primary: Color(0xffFFC908),),
