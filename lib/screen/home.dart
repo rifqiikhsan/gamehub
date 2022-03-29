@@ -284,15 +284,15 @@ class MyHomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      GameOnline(
-                          name: 'Sausage Man',
-                          icon: 'sausage-icon.png',
-                          rating: '4.0',
-                          size: '1.1GB',
-                        ),
-                        SizedBox(
-                            width: 15,
-                          ),
+                      // GameOnline(
+                      //     name: 'Sausage Man',
+                      //     icon: 'sausage-icon.png',
+                      //     rating: '4.0',
+                      //     size: '1.1GB',
+                      //   ),
+                      //   SizedBox(
+                      //       width: 15,
+                      //     ),
                           GestureDetector(
                             child: GameOnline(
                             name: 'Mobile Legends',
@@ -312,21 +312,21 @@ class MyHomePage extends StatelessWidget {
                         SizedBox(
                             width: 15,
                           ),
-                          GameOnline(
-                          name: 'PUBG MOBILE',
-                          icon: 'pubg-icon.png',
-                          rating: '4.0',
-                          size: '730MB',
-                        ),
-                        SizedBox(
-                            width: 15,
-                          ),
-                          GameOnline(
-                          name: 'Sausage Man',
-                          icon: 'sausage-icon.png',
-                          rating: '4.0',
-                          size: '1.1GB',
-                        ),
+                        //   GameOnline(
+                        //   name: 'PUBG MOBILE',
+                        //   icon: 'pubg-icon.png',
+                        //   rating: '4.0',
+                        //   size: '730MB',
+                        // ),
+                        // SizedBox(
+                        //     width: 15,
+                        //   ),
+                        //   GameOnline(
+                        //   name: 'Sausage Man',
+                        //   icon: 'sausage-icon.png',
+                        //   rating: '4.0',
+                        //   size: '1.1GB',
+                        // ),
                         
                     ],
                   ),

@@ -70,7 +70,10 @@ class DetailGameAdmin extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text("Tidak",style: TextStyle(color: Colors.black),),
+                      child: Text(
+                        "Tidak",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
@@ -86,7 +89,10 @@ class DetailGameAdmin extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Text("Ya",style: TextStyle(color: Colors.black),),
+                      child: Text(
+                        "Ya",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ],
                   backgroundColor: Colors.black,

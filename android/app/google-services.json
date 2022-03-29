@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "409181278884",
+    "project_id": "gamehub-549c3",
+    "storage_bucket": "gamehub-549c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409181278884:android:99211bf064ca5e66d08c31",
+        "android_client_info": {
+          "package_name": "com.gamehub.gamehub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409181278884-5erenv0age76blauk4lub6e0vl75gn33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamehub.gamehub",
+            "certificate_hash": "fc1e22a1c0b810b6a77628a6dad44298ff188419"
+          }
+        },
+        {
+          "client_id": "409181278884-kdje2280s9f6scmgoc6gj0d7g4u5njpu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZPOl7S340LWJspz_7AcrCacKP-69CnBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409181278884-kdje2280s9f6scmgoc6gj0d7g4u5njpu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
