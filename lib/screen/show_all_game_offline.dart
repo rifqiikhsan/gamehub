@@ -27,6 +27,9 @@ class AllGameOffline extends StatelessWidget {
         child: StreamBuilder<QuerySnapshot>(
             stream: ref.snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if(!snapshot.hasData){
+                return Center(child: Text(("loading"),),);
+              }
               snapshot.hasData ? snapshot.data?.docs.length : 0;
               return Column(
                 children: List.generate(

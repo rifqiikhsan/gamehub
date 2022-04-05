@@ -13,9 +13,12 @@ class ListGameOnlineAdmin extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25),
       child: SingleChildScrollView(
-        child: StreamBuilder<QuerySnapshot<Object?>>(
+        child: StreamBuilder<QuerySnapshot>(
               stream: ref.snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if(!snapshot.hasData){
+                return Center(child: Text(("loading"),),);
+              }
                 snapshot.hasData ? snapshot.data?.docs.length : 0;
 
                 return SingleChildScrollView(

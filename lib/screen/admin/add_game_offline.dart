@@ -32,7 +32,7 @@ final CollectionReference ref =
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Add Game Online',
+          'Add Game Offline',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
