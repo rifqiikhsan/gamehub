@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gamehub/screen/home.dart';
+import 'package:gamehub/screen/splashscreen.dart';
 
-void main() async{
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -14,13 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FirebaseFirestore.instance
-    //     .collection('users')
-    //     .doc()
-    //     .set({'nama': 'gamehub'});
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }

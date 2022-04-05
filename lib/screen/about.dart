@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
-import 'login.dart';
+import 'admin/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 class AboutMe extends StatelessWidget {
-  const AboutMe({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,55 +33,125 @@ class AboutMe extends StatelessWidget {
             bottomRight: Radius.circular(40),
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 72,
-            ),
-            GestureDetector(
-              child: Image.asset('assets/images/about-profil.png'),
-              onDoubleTap: (){
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ),
-                     );
-              },
-            ),
-            SizedBox(
-              height: 19,
-            ),
-            Text(
-              'Rifqi Ikhsan Rizkillah',
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-            Text(
-              'SMKN 1 Subang',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
-            SizedBox(
-              height: 29,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/icon/WhatsApp.png'),
-                Image.asset('assets/icon/Facebook.png'),
-                Image.asset('assets/icon/Github.png'),
-                Image.asset('assets/icon/ig.png'),
-              ],
-            ),
-          ],
-        ),
+        child:SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 72,
+                    ),
+                    GestureDetector(
+                      child: Image.asset('assets/images/about-profil.png'),
+                      onDoubleTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 19,
+                    ),
+                    Text(
+                      'Rifqi Ikhsan Rizkillah',
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                    Text(
+                      'SMKN 1 Subang',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                    SizedBox(
+                      height: 29,
+                    ),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RaisedButton(
+                        color: Colors.transparent,
+                        child: Image.asset('assets/icon/WhatsApp.png'),
+                        onPressed: () {
+                          _launchWhatsapp(6289629814773, 'Hallo Admin....');
+                        }
+                      ),
+                      RaisedButton(
+                        color: Colors.transparent,
+                        child: Image.asset('assets/icon/Facebook.png'),
+                        onPressed: () {
+                          _launchFacebook();
+                        }
+                      ),
+                      RaisedButton(
+                        color: Colors.transparent,
+                        child: Image.asset('assets/icon/Github.png'),
+                        onPressed: () {
+                          _launchGithub();
+                        }
+                      ),
+                      RaisedButton(
+                        color: Colors.transparent,
+                        child: Image.asset('assets/icon/ig.png'),
+                        onPressed: () {
+                          _launchInstagram();
+                        }
+                      ),  
+                    ],
+                  ),
+                  ],
+                ),
+              ),
       ),
     );
   }
+
+  
 }
+
+
+
+
+
+Future<void> _launchWhatsapp(int phone, String message) async {
+ final url = 'https://wa.me/$phone?text=${Uri.parse(message)}';
+ if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Future<void> _launchFacebook() async {
+ final url = 'https://www.facebook.com/rifqi.ikhsan.589';
+ if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Future<void> _launchGithub() async {
+ final url = 'https://github.com/rifqiikhsan';
+ if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Future<void> _launchInstagram() async {
+ final url = 'https://www.instagram.com/rifqiikhsan19_/';
+ if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+

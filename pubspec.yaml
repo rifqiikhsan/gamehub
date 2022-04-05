@@ -1,8 +1,7 @@
 name: gamehub
 description: A new Flutter project.
 
-
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -12,25 +11,30 @@ environment:
 dependencies:
   cloud_firestore: 3.1.9
   cupertino_icons: ^1.0.0
+  firebase_auth: ^3.3.11
   firebase_core: ^1.13.1
   flutter:
     sdk: flutter
+  social_share: ^2.2.1
+  url_launcher: ^6.0.20
 
-dependency_overrides:
-  firebase_messaging_platform_interface: 3.1.6
-
+# dependency_overrides:
+#   firebase_messaging_platform_interface: 3.1.6
 dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
 
-
+# flutter_native_splash:
+#   color: "#111111"
+#   image: assets/images/Logo-splash.png
+#   android: true
+#   ios: true
+#   web: true
 flutter:
 
-  
   uses-material-design: true
 
-  
   assets:
     - assets/icon/
     - assets/images/

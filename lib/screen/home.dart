@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gamehub/screen/show_all_game_offline.dart';
 import 'list_game_online.dart';
 import 'about.dart';
 import 'list_game_offline.dart';
-import 'detail_game_user.dart';
+import 'detail_gameonline_user.dart';
+import 'show_all_game_online.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -231,6 +233,8 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
+
+
               Row(
                 children: [
                   SizedBox(
@@ -258,17 +262,27 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: 191,
+                    width:220,
                   ),
                   Row(
                     children: [
-                      Text(
-                        'Show All',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0xffFFC908),
-                          fontWeight: FontWeight.w600,
+                      GestureDetector(
+                        child: Text(
+                          'Show All',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xffFFC908),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
+                        onTap:(){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AllGameOnline(),
+                              ),
+                            );
+                        },
                       ),
                     ],
                   ),
@@ -277,64 +291,12 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 height: 13,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      // GameOnline(
-                      //     name: 'Sausage Man',
-                      //     icon: 'sausage-icon.png',
-                      //     rating: '4.0',
-                      //     size: '1.1GB',
-                      //   ),
-                      //   SizedBox(
-                      //       width: 15,
-                      //     ),
-                          GestureDetector(
-                            child: GameOnline(
-                            name: 'Mobile Legends',
-                            icon: 'ml-icon.png',
-                            rating: '4.1',
-                            size: '132MB',
-                            ),
-                            onTap: (){
-                              Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailGameUser(),
-                              ),
-                            );
-                            },
-                          ),
-                        SizedBox(
-                            width: 15,
-                          ),
-                        //   GameOnline(
-                        //   name: 'PUBG MOBILE',
-                        //   icon: 'pubg-icon.png',
-                        //   rating: '4.0',
-                        //   size: '730MB',
-                        // ),
-                        // SizedBox(
-                        //     width: 15,
-                        //   ),
-                        //   GameOnline(
-                        //   name: 'Sausage Man',
-                        //   icon: 'sausage-icon.png',
-                        //   rating: '4.0',
-                        //   size: '1.1GB',
-                        // ),
-                        
-                    ],
-                  ),
-                ),
-              ),
+
+              ListGameOnline(),
               SizedBox(
                 height: 29,
               ),
+
               Row(
                 children: [
                   SizedBox(
@@ -362,17 +324,27 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: 191,
+                    width: 220,
                   ),
                   Row(
                     children: [
-                      Text(
-                        'Show All',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0xffFFC908),
-                          fontWeight: FontWeight.w600,
+                      GestureDetector(
+                        child: Text(
+                          'Show All',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xffFFC908),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AllGameOffline(),
+                              ),
+                            );
+                        },
                       ),
                     ],
                   ),
@@ -381,50 +353,8 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 height: 13,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GameOffline(
-                          name: 'Minecraft',
-                          icon: 'minecraft-icon.png',
-                          rating: '4.6',
-                          size: '138MB',
-                        ),
-                        SizedBox(
-                            width: 15,
-                          ),
-                          GameOffline(
-                          name: 'Ludo King',
-                          icon: 'ludo-icon.png',
-                          rating: '4.2',
-                          size: '57MB',
-                        ),
-                        SizedBox(
-                            width: 15,
-                          ),
-                          GameOffline(
-                          name: 'Helix Jump',
-                          icon: 'helik-icon.png',
-                          rating: '4.2',
-                          size: '92MB',
-                        ),
-                        SizedBox(
-                            width: 15,
-                          ),
-                          GameOffline(
-                          name: 'Helix Jump',
-                          icon: 'helik-icon.png',
-                          rating: '4.2',
-                          size: '92MB',
-                        ),
-                    ],
-                  ),
-                ),
-              ),
+
+              ListGameOffline(),
             ],
           ),
         ),
