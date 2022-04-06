@@ -3,10 +3,16 @@ import 'package:gamehub/main.dart';
 import 'package:gamehub/screen/admin/edit_game_online.dart';
 import 'admin.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+class DetailGameOnlineAdmin extends StatefulWidget {
+  @override
+  State<DetailGameOnlineAdmin> createState() => _DetailGameOnlineAdminState();
+}
 
-class DetailGameOnlineAdmin extends StatelessWidget {
-  const DetailGameOnlineAdmin({Key? key}) : super(key: key);
+class _DetailGameOnlineAdminState extends State<DetailGameOnlineAdmin> {
+  final ref = FirebaseFirestore.instance.collection('gameonline');
 
   @override
   Widget build(BuildContext context) {
@@ -22,239 +28,174 @@ class DetailGameOnlineAdmin extends StatelessWidget {
             color: Color(0xffFFC908),
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditGameOnline(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.edit,
-              size: 25,
-              color: Color(0xffFFC908),
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  title: Text(
-                    "Hapus Game",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xffFFC908),
-                    ),
-                  ),
-                  content: Text(
-                    "Yakin ingin menghapus daftar game ini?",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                  actions: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          Color(0xffFFC908),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        "Tidak",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          Color(0xffFFC908),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AdminPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Ya",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
-                  backgroundColor: Colors.black,
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.delete,
-              size: 25,
-              color: Color(0xffFFC908),
-            ),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       // Navigator.push(
+        //       //   context,
+        //       //   MaterialPageRoute(
+        //       //     builder: (context) => EditGameOnline(docToEdit: snapshot.data!.docs[index],),
+        //       //   ),
+        //       // );
+        //     },
+        //     icon: Icon(
+        //       Icons.edit,
+        //       size: 25,
+        //       color: Color(0xffFFC908),
+        //     ),
+        //   ),
+        // 
+        //
+        // ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 25,
-            ),
-            SingleChildScrollView(
-              scrollDirection:Axis.horizontal,
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 25),
-                    width: 397,
-                    height: 220,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/ml-image.png'),
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 25),
-                    width: 397,
-                    height: 220,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/ml-tumbnail.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 21,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 25,
-                ),
-                Text(
-                  'Mobile Legends',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xffFFC908),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 11,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: ref.snapshots(),
+          builder: (context, snapshot) {
+            return SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'merupakan game MOBA yang dirilis oleh Moontoon. Game ini bisa dimainkan di ponsel Android maupun IOS. Dalam game MOBA ini akan ada 10 pemain yang akan dibagi menjadi 2 tim. Aturan mainnya yakni 5 vs 5. Rata-rata permainan dalam 1 game yakni sekitar 15-20 menit. Setiap pemain bisa memilih 1 hero dari puluhan daftar hero yang tersedia.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 25),
+                          width: 397,
+                          height: 220,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/ml-image.png'),
+                              fit: BoxFit.fitHeight,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 25),
+                          width: 397,
+                          height: 220,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/ml-tumbnail.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.justify,
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 21,
                   ),
-                  Text(
-                    'Game ini mudah mudah dimainkan karena sudah disediakan tutorial saat pertama kali bermain,Size game mobile legends terbilang kecil. Tidak sebesar game game MOBA yang lain yaitu kurang lebih hanya 100 megabytes. Jauh dibandingkan game serupa saat mendownload di playstore,Game Mobile Legends ini memiliki grafik yang baik dari segi karakter, map, item, efek skill dan banyak lagi. Gerakannya pun tidak kaku ketika menghajar musuh. Bisa dibilang hampir sempurna untuk sebuah game mobile, selain itu game ini juga bisa dimainkan bareng bersama teman.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textAlign: TextAlign.justify,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Text(
+                        'Mobile Legends',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xffFFC908),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                    height: 26,
+                    height: 11,
                   ),
-                  Text(
-                    'Size 132MB',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'merupakan game MOBA yang dirilis oleh Moontoon. Game ini bisa dimainkan di ponsel Android maupun IOS. Dalam game MOBA ini akan ada 10 pemain yang akan dibagi menjadi 2 tim. Aturan mainnya yakni 5 vs 5. Rata-rata permainan dalam 1 game yakni sekitar 15-20 menit. Setiap pemain bisa memilih 1 hero dari puluhan daftar hero yang tersedia.',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'Game ini mudah mudah dimainkan karena sudah disediakan tutorial saat pertama kali bermain,Size game mobile legends terbilang kecil. Tidak sebesar game game MOBA yang lain yaitu kurang lebih hanya 100 megabytes. Jauh dibandingkan game serupa saat mendownload di playstore,Game Mobile Legends ini memiliki grafik yang baik dari segi karakter, map, item, efek skill dan banyak lagi. Gerakannya pun tidak kaku ketika menghajar musuh. Bisa dibilang hampir sempurna untuk sebuah game mobile, selain itu game ini juga bisa dimainkan bareng bersama teman.',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        SizedBox(
+                          height: 26,
+                        ),
+                        Text(
+                          'Size 132MB',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25),
+                    width: 395,
+                    height: 49,
+                    decoration: BoxDecoration(
+                      color: Color(0xffFFC908),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _launchPlaystore();
+                      },
+                      child: Text(
+                        'Download Now',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff111111),
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xffFFC908),
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 25),
-              width: 395,
-              height: 49,
-              decoration: BoxDecoration(
-                color: Color(0xffFFC908),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  _launchPlaystore();
-                },
-                child: Text(
-                  'Download Now',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff111111),
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xffFFC908),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+            );
+          }),
     );
   }
 }
 
-
 Future<void> _launchPlaystore() async {
- final url = 'https://play.google.com/store/apps/details?id=com.mobile.legends';
- if (await canLaunch(url)) {
+  final url =
+      'https://play.google.com/store/apps/details?id=com.mobile.legends';
+  if (await canLaunch(url)) {
     await launch(url);
   } else {
     throw 'Could not launch $url';

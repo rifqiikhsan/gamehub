@@ -32,12 +32,15 @@ class AdminPage extends StatelessWidget {
           ),
         ],
         backgroundColor: Colors.black,
-        title: Text(
-          'Halaman Home Admin',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w600,
-            color: Color(0xffFFC908),
+        title: Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            'Halaman Home Admin',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+              color: Color(0xffFFC908),
+            ),
           ),
         ),
       ),
