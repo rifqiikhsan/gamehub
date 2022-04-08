@@ -3,8 +3,7 @@ import 'package:gamehub/screen/admin/add_game_offline.dart';
 import 'package:gamehub/screen/admin/add_game_online.dart';
 import 'package:gamehub/screen/admin/edit_game_offline.dart';
 import 'admin.dart';
-import 'detail_gameoffline_admin.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 import 'add_game_online.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -95,7 +94,7 @@ final ref = FirebaseFirestore.instance.collection('gameoffline');
                                     snapshot.data!.docs[index]['imgurl']
                                         .toString(),
                                   ),
-                                  fit: BoxFit.fitHeight,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -180,7 +179,15 @@ final ref = FirebaseFirestore.instance.collection('gameoffline');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailGameOfflineAdmin(),
+                          builder: (context) => DetailGameOnlineAdmin(
+                                  deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],
+                                ),
                         ),
                       );
                     },

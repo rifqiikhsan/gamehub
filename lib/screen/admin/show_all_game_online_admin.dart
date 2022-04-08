@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamehub/screen/admin/admin.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 import 'add_game_online.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -49,7 +49,7 @@ class _AllGameOnlineAdminState extends State<AllGameOnlineAdmin> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddGameOnline(),
+              builder: (context) => AddGameRecommend(),
             ),
           );
         },
@@ -91,7 +91,7 @@ class _AllGameOnlineAdminState extends State<AllGameOnlineAdmin> {
                                     snapshot.data!.docs[index]['imgurl']
                                         .toString(),
                                   ),
-                                  fit: BoxFit.fitHeight,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -176,7 +176,15 @@ class _AllGameOnlineAdminState extends State<AllGameOnlineAdmin> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailGameOnlineAdmin(),
+                          builder: (context) => DetailGameOnlineAdmin(
+                            deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],
+                          ),
                         ),
                       );
                     },

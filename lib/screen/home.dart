@@ -4,7 +4,7 @@ import 'package:gamehub/screen/show_all_game_offline.dart';
 import 'list_game_online.dart';
 import 'about.dart';
 import 'list_game_offline.dart';
-import 'detail_gameonline_user.dart';
+import 'detail_game_user.dart';
 import 'show_all_game_online.dart';
 
 class MyHomePage extends StatelessWidget {

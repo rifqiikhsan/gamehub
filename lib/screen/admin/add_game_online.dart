@@ -5,14 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'show_all_game_online_admin.dart';
 
-class AddGameOnline extends StatefulWidget {
-  const AddGameOnline({Key? key}) : super(key: key);
+class AddGameRecommend extends StatefulWidget {
+  const AddGameRecommend({Key? key}) : super(key: key);
 
   @override
-  State<AddGameOnline> createState() => _AddGameState();
+  State<AddGameRecommend> createState() => _AddGameState();
 }
 
-class _AddGameState extends State<AddGameOnline> {
+class _AddGameState extends State<AddGameRecommend> {
   final TextEditingController nama = TextEditingController();
   final TextEditingController rating = TextEditingController();
   final TextEditingController size = TextEditingController();

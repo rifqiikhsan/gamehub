@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -40,7 +40,7 @@ class ListGameOnlineAdmin extends StatelessWidget {
                                     image: NetworkImage(snapshot.data!.docs[index]
                                         ['imgurl']
                                         .toString(),),
-                                    fit: BoxFit.fitHeight,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -91,7 +91,15 @@ class ListGameOnlineAdmin extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailGameOnlineAdmin(),
+                                builder: (context) => DetailGameOnlineAdmin(
+                                  deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],
+                                ),
                               ),
                             );
                           },

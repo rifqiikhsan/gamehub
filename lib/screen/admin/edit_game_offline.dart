@@ -1,36 +1,36 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gamehub/screen/admin/show_all_game_offline_admin.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditGameOffline extends StatefulWidget {
-
-DocumentSnapshot docToEdit ;
-EditGameOffline({required this.docToEdit});
+  DocumentSnapshot docToEdit;
+  EditGameOffline({required this.docToEdit});
 
   @override
   State<EditGameOffline> createState() => _EditGameState();
 }
 
-class _EditGameState extends State<EditGameOffline> {               
- TextEditingController nama = TextEditingController();
- TextEditingController rating = TextEditingController();
- TextEditingController size = TextEditingController();
- TextEditingController urlplaystore = TextEditingController();
- TextEditingController imgurl = TextEditingController();
- TextEditingController tumbnail1 = TextEditingController();
- TextEditingController tumbnail2 = TextEditingController();
- TextEditingController deskripsi = TextEditingController();
- TextEditingController review = TextEditingController();
+class _EditGameState extends State<EditGameOffline> {
+  TextEditingController nama = TextEditingController();
+  TextEditingController rating = TextEditingController();
+  TextEditingController size = TextEditingController();
+  TextEditingController urlplaystore = TextEditingController();
+  TextEditingController imgurl = TextEditingController();
+  TextEditingController tumbnail1 = TextEditingController();
+  TextEditingController tumbnail2 = TextEditingController();
+  TextEditingController deskripsi = TextEditingController();
+  TextEditingController review = TextEditingController();
 
-@override
+  @override
   void initState() {
     nama = TextEditingController(text: widget.docToEdit.get('nama'));
     rating = TextEditingController(text: widget.docToEdit.get('rating'));
     size = TextEditingController(text: widget.docToEdit.get('size'));
-    urlplaystore = TextEditingController(text: widget.docToEdit.get('urlplaystore'));
+    urlplaystore =
+        TextEditingController(text: widget.docToEdit.get('urlplaystore'));
     imgurl = TextEditingController(text: widget.docToEdit.get('imgurl'));
     tumbnail1 = TextEditingController(text: widget.docToEdit.get('tumbnail1'));
     tumbnail2 = TextEditingController(text: widget.docToEdit.get('tumbnail2'));
@@ -38,7 +38,6 @@ class _EditGameState extends State<EditGameOffline> {
     review = TextEditingController(text: widget.docToEdit.get('review'));
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,80 +55,75 @@ class _EditGameState extends State<EditGameOffline> {
         ),
         actions: [
           IconButton(
-                             padding: EdgeInsets.only(right: 25.0),
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    title: Text(
-                                      "Hapus Game",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xffFFC908),
-                                      ),
-                                    ),
-                                    content: Text(
-                                      "Yakin ingin menghapus daftar game ini?",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    actions: [
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            Color(0xffFFC908),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text(
-                                          "Tidak",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                      ),
-                                      ElevatedButton(
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            Color(0xffFFC908),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          widget.docToEdit.reference
-                                              .delete()
-                                              .whenComplete(() {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        AllGameOfflineAdmin()));
-                                          });
-                                        },
-                                        child: Text(
-                                          "Ya",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                      ),
-                                    ],
-                                    backgroundColor: Colors.black,
-                                  ),
-                                );
-                              },
-                              icon: Icon(
-                                Icons.delete,
-                                size: 30,
-                                color: Color(0xffFFC908),
-                              ),
-                            ),
+            padding: EdgeInsets.only(right: 25.0),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  title: Text(
+                    "Hapus Game",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xffFFC908),
+                    ),
+                  ),
+                  content: Text(
+                    "Yakin ingin menghapus daftar game ini?",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Color(0xffFFC908),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        "Tidak",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Color(0xffFFC908),
+                        ),
+                      ),
+                      onPressed: () {
+                        widget.docToEdit.reference.delete().whenComplete(() {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => AllGameOfflineAdmin()));
+                        });
+                      },
+                      child: Text(
+                        "Ya",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                  backgroundColor: Colors.black,
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.delete,
+              size: 30,
+              color: Color(0xffFFC908),
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -388,10 +382,10 @@ class _EditGameState extends State<EditGameOffline> {
                 ),
               ),
             ),
-         SizedBox(
-           height: 15,
-         ),
-         Padding(
+            SizedBox(
+              height: 15,
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
                 controller: tumbnail1,
@@ -424,11 +418,10 @@ class _EditGameState extends State<EditGameOffline> {
                 ),
               ),
             ),
-               SizedBox(
-                 height: 15,
-               ),
-
-               Padding(
+            SizedBox(
+              height: 15,
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
                 controller: tumbnail2,
@@ -461,51 +454,50 @@ class _EditGameState extends State<EditGameOffline> {
                 ),
               ),
             ),
-               SizedBox(
-                 height: 25,
-               ),
- 
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 25),
-                  width: 395,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Color(0xffFFC908),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ElevatedButton(
-                    
-                    onPressed: () {
-                      if (kDebugMode) {
-                      widget.docToEdit.reference.update({
-                          'nama':nama.text,
-                          'rating':rating.text,
-                          'size':size.text,
-                          'deskripsi':deskripsi.text,
-                          'review':review.text,
-                          'urlplaystore':urlplaystore.text,
-                          'imgurl':imgurl.text,
-                          'tumbnail1':tumbnail1.text,
-                          'tumbnail2':tumbnail2.text,
-                        }).whenComplete((){
-                            Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (_) => AllGameOfflineAdmin()));
-                        });
-                      }
-                    },
-                    child: Text(
-                      'Save',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xffFFC908),
-                    ),
-                  ),
+            SizedBox(
+              height: 25,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 25),
+              width: 395,
+              height: 45,
+              decoration: BoxDecoration(
+                color: Color(0xffFFC908),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  if (kDebugMode) {
+                    widget.docToEdit.reference.update({
+                      'nama': nama.text,
+                      'rating': rating.text,
+                      'size': size.text,
+                      'deskripsi': deskripsi.text,
+                      'review': review.text,
+                      'urlplaystore': urlplaystore.text,
+                      'imgurl': imgurl.text,
+                      'tumbnail1': tumbnail1.text,
+                      'tumbnail2': tumbnail2.text,
+                    }).whenComplete(() {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => AllGameOfflineAdmin()));
+                    });
+                  }
+                },
+                child: Text(
+                  'Save',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black),
                 ),
-              
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffFFC908),
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'detail_gameonline_user.dart';
+import 'detail_game_user.dart';
 
 class ListGameOffline extends StatelessWidget {
   final ref = FirebaseFirestore.instance.collection('gameoffline');
@@ -45,7 +45,7 @@ class ListGameOffline extends StatelessWidget {
                                   snapshot.data!.docs[index]['imgurl']
                                       .toString(),
                                 ),
-                                fit: BoxFit.fitHeight,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -90,7 +90,13 @@ class ListGameOffline extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetailGameOnlineUser(),
+                            builder: (context) => DetailGameOnlineUser(deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],),
                           ),
                         );
                       },

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gamehub/screen/admin/show_all_game_online_admin.dart';
-import 'detail_gameonline_user.dart';
+import 'detail_game_user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AllGameOnline extends StatelessWidget {
-   AllGameOnline({Key? key}) : super(key: key);
+  AllGameOnline({Key? key}) : super(key: key);
   final ref = FirebaseFirestore.instance.collection('gameonline');
 
   @override
@@ -23,14 +23,17 @@ class AllGameOnline extends StatelessWidget {
           ),
         ),
       ),
-      
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: StreamBuilder<QuerySnapshot<Object?>>(
             stream: ref.snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if(!snapshot.hasData){
-                return Center(child: Text(("loading"),),);
+              if (!snapshot.hasData) {
+                return Center(
+                  child: Text(
+                    ("loading"),
+                  ),
+                );
               }
               snapshot.hasData ? snapshot.data?.docs.length : 0;
               return Column(
@@ -53,10 +56,11 @@ class AllGameOnline extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                                 image: DecorationImage(
-                                  image: NetworkImage(snapshot.data!.docs[index]
-                                        ['imgurl']
-                                        .toString(),),
-                                  fit: BoxFit.fitHeight,
+                                  image: NetworkImage(
+                                    snapshot.data!.docs[index]['imgurl']
+                                        .toString(),
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -68,9 +72,7 @@ class AllGameOnline extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  snapshot.data!.docs[index]
-                                        ['nama']
-                                        .toString(),
+                                  snapshot.data!.docs[index]['nama'].toString(),
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
@@ -83,9 +85,8 @@ class AllGameOnline extends StatelessWidget {
                                   children: [
                                     Image.asset('assets/icon/Star-besar.png'),
                                     Text(
-                                      snapshot.data!.docs[index]
-                                        ['rating']
-                                        .toString(),
+                                      snapshot.data!.docs[index]['rating']
+                                          .toString(),
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -97,9 +98,7 @@ class AllGameOnline extends StatelessWidget {
                                   height: 40,
                                 ),
                                 Text(
-                                  snapshot.data!.docs[index]
-                                        ['size']
-                                        .toString(),
+                                  snapshot.data!.docs[index]['size'].toString(),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
@@ -115,7 +114,13 @@ class AllGameOnline extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailGameOnlineUser(),
+                          builder: (context) => DetailGameOnlineUser(deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],),
                         ),
                       );
                     },

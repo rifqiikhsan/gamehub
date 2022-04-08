@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gamehub/screen/admin/admin.dart';
 import 'package:gamehub/screen/admin/show_all_game_online_admin.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'detail_gameonline_admin.dart';
+import 'detail_game_admin.dart';
 
 class EditGameOnline extends StatefulWidget {
   

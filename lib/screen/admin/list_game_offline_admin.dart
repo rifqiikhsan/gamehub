@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'detail_gameoffline_admin.dart';
+import 'detail_game_admin.dart';
 
 class ListGameOfflineAdmin extends StatelessWidget {
    ListGameOfflineAdmin({ Key? key }) : super(key: key);
@@ -39,7 +39,7 @@ final ref = FirebaseFirestore.instance.collection('gameoffline');
                                     image: NetworkImage(snapshot.data!.docs[index]
                                         ['imgurl']
                                         .toString(),),
-                                    fit: BoxFit.fitHeight,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -90,7 +90,15 @@ final ref = FirebaseFirestore.instance.collection('gameoffline');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailGameOfflineAdmin(),
+                                builder: (context) => DetailGameOnlineAdmin(
+                                  deskripsi: snapshot.data!.docs[index]['deskripsi'],
+                              tumbnail1: snapshot.data!.docs[index]['tumbnail1'],
+                              tumbnail2: snapshot.data!.docs[index]['tumbnail2'],
+                              review: snapshot.data!.docs[index]['review'],
+                              urlplaystore: snapshot.data!.docs[index]['urlplaystore'],
+                              size: snapshot.data!.docs[index]['size'],
+                              nama: snapshot.data!.docs[index]['nama'],
+                                ),
                               ),
                             );
                           },
