@@ -6,6 +6,8 @@ import 'about.dart';
 import 'list_game_offline.dart';
 import 'detail_game_user.dart';
 import 'show_all_game_online.dart';
+import 'package:flutter/services.dart';
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -28,31 +30,71 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
+                  // Expanded(
+                  //   child: IconButton(
+                  //     onPressed: () async {
+                  //       final result = await showSearch<String>(
+                  //         context: context,
+                  //         delegate: NameSearch(names),
+                  //       );
+
+                  //       print(result);
+                  //     },
+                  //     icon: Icon(
+                  //       Icons.search,
+                  //       color: Color(0xffFFC908),size: 40,
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   width: 300,
+                  // ),
                   Expanded(
                     child: Container(
                       height: 45,
-                      child: TextField(
-                        style:TextStyle(color: Colors.white,fontSize: 20),
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search,color: Colors.white,),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
+                      // child: TextField(
+                      //   style:TextStyle(color: Colors.white,fontSize: 20),
+                      //   decoration: InputDecoration(
+                      //     prefixIcon: Icon(Icons.search,color: Colors.white,),
+                      // focusedBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(20.0),
+                      //   borderSide: BorderSide(
+                      //     color: Color(0xffFFC908),
+                      //   ),
+                      // ),
+                      // enabledBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(20.0),
+                      //   borderSide: BorderSide(
+                      //     color: Color(0xffFFC908),
+                      //     width: 1.0,
+                      //   ),
+                      // ),
+                      //             ),
+                      // ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
                           color: Color(0xffFFC908),
                         ),
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Color(0xffFFC908),
-                          width: 1.0,
-                        ),
-                      ),
-                                  ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          const Text(
+                                'GameHub',
+                                style: TextStyle(
+                                    color: Color(0xffFFC908),
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                        ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 17,
                   ),
                   GestureDetector(
@@ -71,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                 ],
@@ -79,12 +121,13 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 height: 35,
               ),
+
               //game recommended
               GameRecommend(),
+
               SizedBox(
                 height: 25,
               ),
-
 
               Row(
                 children: [
@@ -113,7 +156,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width:220,
+                    width: 220,
                   ),
                   Row(
                     children: [
@@ -126,13 +169,13 @@ class MyHomePage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        onTap:(){
+                        onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AllGameOnline(),
-                              ),
-                            );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllGameOnline(),
+                            ),
+                          );
                         },
                       ),
                     ],
@@ -188,13 +231,13 @@ class MyHomePage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AllGameOffline(),
-                              ),
-                            );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllGameOffline(),
+                            ),
+                          );
                         },
                       ),
                     ],
@@ -213,3 +256,12 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+const names = [
+  "Mobile Legends",
+  "PUBG MOBILE",
+  "Clash Of Clans",
+  "Minecraft",
+  "Ludo KIng",
+  "Helix Jump",
+];

@@ -189,6 +189,9 @@ class DetailGameOnlineAdmin extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 25,
+            ),
           ],
         ),
       ),

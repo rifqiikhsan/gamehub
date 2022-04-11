@@ -28,7 +28,7 @@ class DetailGameOnlineUser extends StatelessWidget {
       backgroundColor: Color(0xff111111),
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
+        title: const Text(
           'Detail Game',
           style: TextStyle(
             fontSize: 20,
@@ -42,8 +42,21 @@ class DetailGameOnlineUser extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 25,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.arrow_right_alt_rounded,
+                    color: Color(0xffFFC908),
+                    size: 35,
+                  ),
+                ),
+                SizedBox(
+                  width: 25,
+                ),
+              ],
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -79,18 +92,18 @@ class DetailGameOnlineUser extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 21,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 Text(
                   nama,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                     color: Color(0xffFFC908),
@@ -98,7 +111,7 @@ class DetailGameOnlineUser extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
             Padding(
@@ -109,14 +122,14 @@ class DetailGameOnlineUser extends StatelessWidget {
                 children: [
                   Text(
                     deskripsi,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.justify,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
@@ -186,6 +199,9 @@ class DetailGameOnlineUser extends StatelessWidget {
                   primary: Color(0xffFFC908),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 25,
             ),
           ],
         ),
