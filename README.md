@@ -1,5 +1,4 @@
-# gamehub
-
+#GameHub
 A new Flutter project.
 
 ## Getting Started
